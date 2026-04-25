@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# City Snapshot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small web app that allows users to enter a city and view a compact snapshot containing current weather information with a sun-protection advise and local time.
 
-Currently, two official plugins are available:
+## Technical Details
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Framework: React
+- Build tool: Vite
+- Language: TypeScript
+- Styling: Tailwind CSS
+- External API: Tomorrow.io Weather API (https://docs.tomorrow.io/reference/realtime-weather)
 
-## React Compiler
+## Architecture
+The application has component-based architecture.
+- UI Components: reusable components.
+- Hooks: custom hooks for logic encapsulating (e.g., data fetching).
+- Types: shared TypeScript interfaces.
+- Utils: reusable helper functions. 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Environment Configuration
+- Sensitive data such as API keys are stored as environment variables.
+- Change "your_api_key_here" to your API key in the .env.
 
-## Expanding the ESLint configuration
+## Example Flow
+1. User enters a location.
+2. App sends a repuest to Tomorrow.io API.
+3. Response is parsed and typed.
+4. UI updates with real-time weather conditions.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## AI Usage
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+I used AI tools such as ChatGPT and Copilot. They helped me with:
+- generating a function to compute local time based on API response data (using luxon and timezone lookup),
+- providing guidance and improving component structure and making the architecture more component-based
+- assisting with boilerplate code generation (Copilot), particularly for React hooks and general setup.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Before accepting suggestions or changes I reviewed and verified them manually. AI was used as a support tool.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Setup Instructions
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+In the .env file change "your_api_key_here" to your own API key.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Run locally:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+npm install
+npm run dev
