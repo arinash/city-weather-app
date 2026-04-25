@@ -18,7 +18,7 @@ export default function WeatherCard({ city, localTime, info }: WeatherCardProps)
             
             <h2 className="text-xl font-bold text-blueAccent mb-1">Weather</h2>
             <div className="grid grid-cols-2 gap-4">
-                <div className="bg-bg/50 rounded-2xl p-4 grid grid-cols-2 gap-2">
+                <div className="bg-bg/50 rounded-2xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {[
                         { label: 'Temperature: ', value: `${info.temperature}°C`, icon: <span>&#127777;</span>},
                         { label: 'Humidity: ', value: `${info.humidity}%`, icon: <span>&#128167;</span>},
@@ -30,7 +30,7 @@ export default function WeatherCard({ city, localTime, info }: WeatherCardProps)
                         </div>
                     ))}
                 </div>
-                <div className="bg-bg/50 rounded-2xl p-4 grid grid-cols-2 gap-2">
+                <div className="bg-bg/50 rounded-2xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-1">
                     {[
                     { label: 'Wind Speed:', value: `${info.windSpeed}km/h`, icon: <span>&#128168;</span>},
                     { label: 'Wind Gusts:', value: `${info.windGust}km/h`, icon: <span>&#128168;</span>},
@@ -42,19 +42,6 @@ export default function WeatherCard({ city, localTime, info }: WeatherCardProps)
                         </div>
                     ))}
                 </div>
-                {/* {[
-                    { label: 'Temperature: ', value: `${info.temperature}°C`, icon: <span>&#127777;</span>},
-                    { label: 'Humidity: ', value: `${info.humidity}%`, icon: <span>&#128167;</span>},
-                    { label: 'Wind Speed:', value: `${info.windSpeed}km/h`, icon: <span>&#128168;</span>},
-                    { label: 'Wind Gusts:', value: `${info.windGust}km/h`, icon: <span>&#128168;</span>},
-                    { label: 'UV Index:', value: `${info.uvIndex}`, icon: <span>&#x2600;&#xFE0F;</span>},
-                ].map(({ label, value, icon }) => (
-                    <div key={label}>
-                        <span></span>
-                        <p className="text-md text-blueAccent/80 mb-2">{label}</p>
-                        <p className="text-md text-blueAccent/80 mb-2 font-bold">{icon} {value}</p>
-                    </div>
-                ))} */}
             </div>
             <div className="bg-bg/50 rounded-2xl p-4">
                 {[
